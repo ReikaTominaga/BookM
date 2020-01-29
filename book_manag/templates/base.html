@@ -40,6 +40,12 @@
                             <li class="nav-item {% block active_inquiry %}{% endblock %}">
                                 <a class="nav-link" href="{% url 'book_manag:inquiry' %}">INQUIRY</a>
                             </li>
+                            {% if user.is_authenticated %}
+                                <li class="nav-item {% block active_bookm_list %}{% endblock %}">
+                                    <a class="nav-link"href="{% url 'book_manag:bookm_list' %}">BOOK LIST</a>
+                                </li>
+                            {% endif %}
+
                         </ul>
                         <ul class="navbar-nav ml-auto">
                             {% if user.is_authenticated %}
