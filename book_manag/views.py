@@ -29,7 +29,8 @@ class InquiryView(generic.FormView):
 class BookmListView(LoginRequiredMixin, generic.ListView):
     model = Book
     template_name = 'bookm_list.html'
+    paginate_by = 2
 
     def get_queryset(self):
-        diaries = Book.objects.filter(user=self.request.user).order_by('-created_at')
-        return diaries
+        books = Book.objects.filter(user=self.request.user).order_by('-created_at')
+        return books
