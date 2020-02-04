@@ -1,5 +1,6 @@
 from accounts.models import CustomUser
 from django.db import models
+from django import forms
 
 class Book(models.Model):
     """書籍"""
@@ -12,3 +13,11 @@ class Book(models.Model):
 
     def __str__(self):
         return self.name
+
+CHOICE = (
+    ('0', '貸出可'),
+    ('1', '貸出中'),
+)
+
+def book_status(forms.Form):
+    select = forms.ChoiceField(widget=forms.Select, choices=CHOICE)
